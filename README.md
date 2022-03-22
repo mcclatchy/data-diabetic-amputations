@@ -1,3 +1,39 @@
+# Overview
+
+The sections below walk through the steps involved with each data processing notebook. Here are some overarching links for the data involved in this analysis process.
+
+**Shapefile Data Downloads**
+* [ZCTAs](https://www2.census.gov/geo/tiger/TIGER2021/ZCTA520/tl_2021_us_zcta520.zip)
+* [States](https://www2.census.gov/geo/tiger/TIGER2021/STATE/tl_2021_us_state.zip)
+
+**Low-to-Moderate-Income Data**
+* [HUD Map](https://hudgis-hud.opendata.arcgis.com/datasets/HUD::low-to-moderate-income-population-by-tract)
+
+**Building Footprint Data**
+* [Microsoft](https://github.com/Microsoft/USBuildingFootprints)
+
+**Obtaining Driving Routes**
+* [Openrouteservice Directions API](https://openrouteservice.org/dev/#/api-docs/v2/directions)
+
+**Calculating Isochrones**
+* [Openrouteservice Isochrones API](https://openrouteservice.org/dev/#/api-docs/v2/isochrones)
+
+And here are some links to data that was output by these notebooks and used for the maps and tables in the article. Some data may have been edited manually in the Mapshaper GUI or edited manually (as in the case of the HUD data).
+
+**First Map (Deep South Amputation Rates)**
+* [Zipcodes](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/zipcodes.json)
+* [Deep South States](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/deep_south.json)
+* [Surrounding States](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/surrounding_states.json)
+
+**Table of Diabetic Amputation Rates**
+* [Rates/Rankings](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/table_rates_rankings.json)
+
+**Second Map (29203 Routes & Buildings)**
+* [Low-to-Moderate Income Data](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/income.json)
+* [Grocery Routes](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/routes_grocery.json)
+* [Dollar Store Routes](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/routes_dollar_store.json)
+* [Dialysis Center Routes](https://media.mcclatchy.com/static/2022/diabetic-amputations/data/routes_dialysis.json)
+
 # diabetic_amputations.ipynb
 
 ### (1) Mapping Zip Codes to State FIPS Codes
