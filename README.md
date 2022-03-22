@@ -77,7 +77,7 @@ If we also add the states of Kentucky, West Virginia and Virginia (whose data wa
 
 From a data metric perspective, a population-wide diabetic amputation rate is not the best metric for care specific to people with diabetes. If 100% of the population of a 10,000 person town had diabetes, and 10 people recieved amputations, the population-wide amputation rate would be **10 per 10K residents**. The diabetic-population amputation rate would be **10 per 10K diabetics**, since everyone has diabetes.
 
-Now, if 10% of the population of 10,000 person town had diabetes (i.e. 1000 people), and 10 people still received amputations, the population-wide amputation rate would still be **10 per 10K residents**. However, the diabetic-population amputation rate would now be **100 per 10K diabetics%** (5/10). The second group of diabetics are receiving significantly worse care, with much worse outcomes. This metric would better encapsulate a comparison of diabetic amputations across ZIP codes as well. 
+Now, if 10% of the population of a 10,000 person town had diabetes (i.e. 1000 people), and 10 people still received amputations, the population-wide amputation rate would still be **10 per 10K residents**. However, the diabetic-population amputation rate would now be **100 per 10K diabetics**. The second group of diabetics is receiving significantly worse care, with much worse outcomes. This metric would better encapsulate a comparison of diabetic amputations across ZIP codes as well. 
 
 ### (10) Finding population densities
 
@@ -89,7 +89,7 @@ Alabama's dataset was more accurately reported for 2018-2020, and Virginia's was
 
 ### (11) Looking into Poverty Data 
 
-Ultimately, for the article we used Low-to-Moderate Income numbers by census tract, found at this [HUD map](https://hudgis-hud.opendata.arcgis.com/datasets/HUD::low-to-moderate-income-population-by-tract/explore?filters=eyJTVEFURSI6WyI0NSJdLCJDT1VOVFkiOlsiMDc5IiwiMDYzIiwiMDE3Il19&location=34.004900%2C-81.118087%2C9.97) (whose data is downloadable). This section gathers poverty data for Lexington County (FIPS: 063) and Richland County (FIPS: 079) in South Carolina.
+Ultimately, for the article, we used Low-to-Moderate Income numbers by census tract, found at this [HUD map](https://hudgis-hud.opendata.arcgis.com/datasets/HUD::low-to-moderate-income-population-by-tract/explore?filters=eyJTVEFURSI6WyI0NSJdLCJDT1VOVFkiOlsiMDc5IiwiMDYzIiwiMDE3Il19&location=34.004900%2C-81.118087%2C9.97) (whose data is downloadable). This section gathers poverty data from the Census for Lexington County (FIPS: 063) and Richland County (FIPS: 079) in South Carolina.
 
 ### (12) Vehicle Ownership Data
 
@@ -101,9 +101,9 @@ A crucial factor of the USDA's Low-Income, Low-Access designation (modern, more 
 
 In the Eau Claire community in Columbia, SC, we are interested in the proximity of residents to dollar stores vs proximity to grocery stores. Using the USDA's Low-Income, Low-Access definition, we are minimally interested in the distances at 1/2 mile and 1 mile. For low-income residents with low access to transportation, it's critical to be within 1/2 mile or at least 1 mile of a grocery store.
 
-To help find these distances, we started with a dataset of buildings in the Columbia, SC area derived from [Microsoft's Building Footprint Data](https://github.com/Microsoft/USBuildingFootprints). We used the Mapshaper GUI to take the full dataset, clip it by a Columbia, SC shapefile, and output only the Columbia, SC buildings. The downside of the data is that it does not indicate which buildings are residential, so ultimately, the maps are more of a proxy than an exact representation of residential distance to stores.
+To help find these distances, we started with a dataset of buildings in the Columbia, SC area, derived from [Microsoft's Building Footprint Data](https://github.com/Microsoft/USBuildingFootprints). We used the Mapshaper GUI to take the full Microsoft Building Footpring dataset, clip it by a Columbia, SC shapefile, and output only the Columbia, SC buildings. The downside of the data is that it does not indicate which buildings are residential, so ultimately, the maps are more of a proxy than an exact representation of residential distance to stores.
 
-Here, we're clipping the building data further to only include the greater Eau Claire area. After clipping, we then use an isochrone API from [Openrouteservice](https://openrouteservice.org/dev/#/api-docs/v2/isochrones) to create isochrone polygons (a polygon whose bounds are X miles away from a specified point) for all dollar stores and grocery stores. We then clip the building data by isochrones at 1/4 mile, 1/2 mile, 3/4 mile, and 1 mile distances away from the specific point. We output that data, reaggregate it and label each building by which isochrone zone it is in.
+In this step, we're clipping the building data even further to only include the greater Eau Claire area. After clipping, we then use an isochrone API from [Openrouteservice](https://openrouteservice.org/dev/#/api-docs/v2/isochrones) to create isochrone polygons (a polygon whose bounds are X miles away from a specified point) for all dollar stores and grocery stores. We then clip the building data by isochrones at 1/4 mile, 1/2 mile, 3/4 mile, and 1 mile distances away from the specific point. We output that data, reaggregate it and label each building by which isochrone zone it is in.
 
 Ultimately each building will be tagged with a label indicating which isochrone it was grouped into. For instance, the isochrone tags for how far a building is from a grocery store would be the following. The value after the dash indicates the number of meters away from the grocery store since Openrouteservice uses meters. 
     
